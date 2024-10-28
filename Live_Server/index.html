@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Countdown Timer</title>
+  </head>
+  <body
+    style="
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      text-align: center;
+      padding-top: 50px;
+    "
+  >
+    <h1>Event Countdown Timer</h1>
+    <div
+      style="
+        display: inline-block;
+        border: 2px solid #333;
+        padding: 20px;
+        background-color: #00ff62;
+      "
+    >
+      <h2 id="countdown" style="font-size: 48px; margin: 0">00:00:00</h2>
+    </div>
+    <div style="margin-top: 20px">
+      <button
+        id="startBtn"
+        style="
+          padding: 10px 20px;
+          margin: 5px;
+          background-color: #007bff;
+          color: white;
+          border: none;
+          cursor: pointer;
+        "
+      >
+        Start Countdown
+      </button>
+      <button
+        id="resetBtn"
+        style="
+          padding: 10px 20px;
+          margin: 5px;
+          background-color: #ff0000;
+          color: white;
+          border: none;
+          cursor: pointer;
+        "
+      >
+        Reset
+      </button>
+    </div>
+
+    <script>
+      let countdownInterval
+      let timeLeft = 10 * 60 // 10 minutes countdown (600 seconds)
+
+      function updateCountdown() {
+        const minutes = Math.floor(timeLeft / 60)
+        const seconds = timeLeft % 60
+
+        document.getElementById('countdown').innerHTML =
+          (minutes < 10 ? '0' : '') +
+          minutes +
+          ':' +
+          (seconds < 10 ? '0' : '') +
+          seconds
+
+        if (timeLeft > 0) {
+          timeLeft--
+        } else {
+          clearInterval(countdownInterval)
+          alert('Time is up!')
+        }
+      }
+
+      document
+        .getElementById('startBtn')
+        .addEventListener('click', function () {
+          clearInterval(countdownInterval)
+          countdownInterval = setInterval(updateCountdown, 1000)
+        })
+
+      document
+        .getElementById('resetBtn')
+        .addEventListener('click', function () {
+          clearInterval(countdownInterval)
+          timeLeft = 10 * 60 // Reset to 10 minutes
+          updateCountdown()
+        })
+
+      updateCountdown() // Initialize display
+    </script>
+  </body>
+</html>
