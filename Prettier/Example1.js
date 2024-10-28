@@ -1,26 +1,9 @@
-function add(a, b) {
-  return a + b
-}
-function subtract(a, b) {
-  if (a > b) {
-    return a - b
-  } else {
-    return b - a
+function sumArray(arr) {
+  let sum = 0
+  for (let i = 0; i < arr.length; i++) {
+    sum += arr[i]
   }
+  return sum
 }
-const multiply = (x, y) => {
-  return x * y
-}
-const numbers = [1, 2, 3, 4, 5]
-const results = numbers.map((num) => {
-  return multiply(num, 2)
-  console.log(num)
-})
-console.log(results)
-function sayHello(name) {
-  console.log('Hello, ' + name + '!')
-}
-sayHello('Alice')
-sayHello('Bob')
-sayHello('Charlie')
-sayHello('David')
+const numbers = [10, 5, 3, 7, 12]
+console.log('Sum:' + sumArray(numbers))

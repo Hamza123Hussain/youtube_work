@@ -1,22 +1,13 @@
-function calculateCircumference(radius) {
-  const pi = 3.14159
-  return 2 * pi * radius
-}
-function findMax(arr) {
-  let max = arr[0]
-  for (let i = 1; i < arr.length; i++) {
-    if (arr[i] > max) {
-      max = arr[i]
+function isPrime(num) {
+  if (num <= 1) {
+    return false
+  }
+  for (let i = 2; i <= Math.sqrt(num); i++) {
+    if (num % i === 0) {
+      return false
     }
   }
-  return max
+  return true
 }
-const values = [5, 12, 7, 3, 8, 20]
-const circumferences = values.map((r) => {
-  return calculateCircumference(r)
-})
-const maxVal = findMax(values)
-for (let i = 0; i < circumferences.length; i++) {
-  console.log('Circumference: ' + circumferences[i])
-}
-console.log('Max Value: ' + maxVal)
+const testNum = 29
+console.log('Is Prime: ' + isPrime(testNum))
